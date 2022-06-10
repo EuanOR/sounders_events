@@ -9,7 +9,8 @@ const soundersEventSchema = new mongoose.Schema({
   city: String,
   state: String,
   zip: String,
-  country: String
+  country: String,
+  home: Boolean
 })
 
 module.exports = mongoose.model('SoundersEvent', soundersEventSchema)

@@ -4,24 +4,14 @@ const soundersEventController = require('../controllers/soundersEventController'
 const routes = [
   {
     method: 'GET',
-    url: '/api/soundersEvents',
+    url: '/soundersEvents',
     handler: soundersEventController.getSoundersEvents
   },
   {
-    method: 'GET',
-    url: '/api/soundersEvents/:id',
-    handler: soundersEventController.getSingleSoundersEvent
-  },
-  {
     method: 'POST',
-    url: '/api/soundersEvents',
+    url: '/soundersEvents',
     handler: soundersEventController.addSoundersEvent
   }
-    // schema: documentation.addSoundersEventSchema
-  // {
-  //   method: 'PUT',
-  //   url: '/api/soundersEvents/:id',
-  //   handler: soundersEventController.updatesoundersEvent
-  // }
+
 ]
 module.exports = routes
