@@ -9,16 +9,11 @@ def scrape_ticketmaster():
     r = requests.get(api_url)
     response_data = json.loads(r.text)
 
-    event_data = dict()
     sounders_events = []
 
     for event in response_data['_embedded']['events']:
+        event_data = dict()
         try:
-            # try:
-            #     event_data.pop('_id')
-            # except:
-            #     pass
-            
             venue = event['_embedded']['venues'][0]
             
             
@@ -37,6 +32,6 @@ def scrape_ticketmaster():
 
             sounders_events.append(event_data)
         except:
-            return (False, {}, "Error while parsing Seatgeek API")
+            return []
     
-    return (True, sounders_events, "Successfully pulled data from Ticketmaster")
+    return sounders_events

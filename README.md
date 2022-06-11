@@ -4,7 +4,7 @@ node 16.x.x
 npm 8.x.x
 python 3.x.x
 pip3 21.x.x
-mongomon 5.x.x
+mongo 5.x.x
 
 ## Overview
 

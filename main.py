@@ -10,18 +10,18 @@ while 1:
     sounders_events = []
 
     seatgeek_data = seatgeek.scrape_seatgeek()
-    if seatgeek_data[0]:
-        sounders_events = sounders_events + seatgeek_data[1]
-    else:
+    if not seatgeek_data:
         print("Error while pulling data from Seatgeek")
 
     ticketmaster_data = ticketmaster.scrape_ticketmaster()
 
-    if ticketmaster_data[0]:
-        sounders_events = sounders_events + ticketmaster_data[1]
-    else:
-        print("Error while pulling data from Ticketmaster")
+    if not ticketmaster_data:
 
+        print("Error while pulling data from Ticketmaster")
+    try:
+        sounders_events = seatgeek_data + ticketmaster_data
+    except:
+        print("Failed to combine data sources")
     api_push_success = push_data_to_api(sounders_events)
 
     if api_push_success[0]:

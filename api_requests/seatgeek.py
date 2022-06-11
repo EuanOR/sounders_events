@@ -9,10 +9,11 @@ def scrape_seatgeek():
     r = requests.get(api_url)
     response_data = json.loads(r.text)
 
-    event_data = dict()
+    
     sounders_events = []
 
     for event in response_data['events']:
+        event_data = dict()
         try:
             event_data['name'] = event['title']
             event_data['date'] = event['datetime_local']
@@ -30,6 +31,5 @@ def scrape_seatgeek():
 
             sounders_events.append(event_data)
         except:
-            return (False, {}, "Error while parsing Seatgeek API")
-    
-    return (True, sounders_events, "Successfully pulled data from Seatgeek")
+            return []
+    return sounders_events

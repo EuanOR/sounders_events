@@ -23,10 +23,11 @@ def push_data_to_api(events_data):
     if event_names_result[0] != -1:
         event_names = event_names_result[1]
         for event in events_data:
-            if event['name'] not in event_names:
+            if event['name'] not in event_names:                
                 r = requests.post(url=api_url, headers=headers, json=event)
                 if r.status_code != 200:
                     return (False, event, "Failed to write data to API")
+                event_names.append(event['name'])
     
         return (True, {}, "Success")
     else:
